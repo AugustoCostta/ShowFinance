@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.jailton.androidapptemplate"
+    namespace = "com.augusto.ShowFinance"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.jailton.androidapptemplate"
+        applicationId = "com.augusto.ShowFinance"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -52,7 +52,9 @@ dependencies {
     implementation(libs.firebase.database.ktx)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth)
+    implementation (libs.play.services.auth)
     testImplementation(libs.junit)
+    implementation (libs.play.services.auth)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

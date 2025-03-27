@@ -1,4 +1,4 @@
-package com.jailton.androidapptemplate.ui.login
+package com.augusto.ShowFinance.ui.login
 
 import android.content.ContentValues.TAG
 import android.content.Intent
@@ -9,19 +9,18 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.FirebaseApp
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
-import com.jailton.androidapptemplate.MainActivity
-import com.jailton.androidapptemplate.R
-import com.jailton.androidapptemplate.ui.usuario.CadastroUsuarioActivity
+import com.augusto.ShowFinance.MainActivity
+import com.augusto.ShowFinance.R
+import com.augusto.ShowFinance.ui.usuario.CadastroUsuarioActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -41,12 +40,9 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
         FirebaseApp.initializeApp(this)
-
         // Inicializa o Firebase Auth
         firebaseAuth = FirebaseAuth.getInstance()
-
         emailEditText = findViewById(R.id.edit_text_email)
         passwordEditText = findViewById(R.id.edit_text_password)
         loginButton = findViewById(R.id.button_login)
@@ -61,7 +57,6 @@ class LoginActivity : AppCompatActivity() {
             )
             startActivity(intent)
         }
-
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString()
             val password = passwordEditText.text.toString()
@@ -83,6 +78,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+
     private fun signIn(email: String, password: String) {
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -91,8 +87,10 @@ class LoginActivity : AppCompatActivity() {
                     updateUI(firebaseAuth.currentUser)
                 } else {
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     updateUI(null)
                 }
             }
@@ -128,8 +126,10 @@ class LoginActivity : AppCompatActivity() {
                 } else {
                     // Tratar falha de login
                     Log.w(TAG, "signInWithGoogle:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     updateUI(null)
                 }
             }
