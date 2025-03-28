@@ -8,7 +8,6 @@
     android:id="@+id/fragment_login_usuario"
     android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
     tools:context=".ui.login.LoginActivity">
-
     <TextView
         android:id="@+id/text_login_title"
         android:layout_width="wrap_content"
@@ -20,7 +19,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
     <EditText
         android:id="@+id/edit_text_email"
         android:layout_width="match_parent"
@@ -31,7 +29,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_login_title" />
-
     <EditText
         android:id="@+id/edit_text_password"
         android:layout_width="match_parent"
@@ -42,7 +39,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_text_email" />
-
     <Button
         android:id="@+id/button_login"
         android:layout_width="wrap_content"
@@ -52,7 +48,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edit_text_password" />
-
     <TextView
         android:id="@+id/registerLink"
         android:layout_width="wrap_content"
@@ -65,4 +60,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btnGoogleSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Login com Google"
+        app:layout_constraintTop_toBottomOf="@id/registerLink"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
