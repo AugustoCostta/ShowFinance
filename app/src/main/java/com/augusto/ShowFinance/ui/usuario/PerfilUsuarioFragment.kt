@@ -20,9 +20,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.jailton.androidapptemplate.R
-import com.jailton.androidapptemplate.baseclasses.Usuario
-import com.jailton.androidapptemplate.databinding.FragmentPerfilUsuarioBinding
+import com.augusto.ShowFinance.R
+import com.augusto.ShowFinance.baseclasses.Usuario
+import com.augusto.ShowFinance.databinding.FragmentPerfilUsuarioBinding
 
 class PerfilUsuarioFragment : Fragment() {
 
