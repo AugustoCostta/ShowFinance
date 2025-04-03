@@ -1,4 +1,5 @@
 package com.jailton.androidapptemplate.ui.usuario
+package com.augusto.ShowFinance.ui.usuario
 
 import android.os.Bundle
 import android.util.Log
