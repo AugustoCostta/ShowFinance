@@ -59,6 +59,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/registerEmailEditText" />
+    <EditText
+        android:id="@+id/registerCidadeEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Cidade"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registerEnderecoEditText" />
 
     <EditText
         android:id="@+id/registerPasswordEditText"
@@ -66,7 +74,7 @@
         android:layout_height="wrap_content"
         android:hint="Senha"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/registerEnderecoEditText"
+        app:layout_constraintTop_toBottomOf="@id/registerCidadeEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
