@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Atualização de Usuário"
+        android:text="@string/TextAtualizaUsuario"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,14 +28,14 @@
         app:layout_constraintTop_toBottomOf="@id/textCadastroUsuarioTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="Foto de perfil"/>
+        android:contentDescription="@string/TextImagemPerfil"/>
 
 
     <EditText
         android:id="@+id/registerNameEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Nome"
+        android:hint="@string/EditNome"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
         android:id="@+id/registerEmailEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="@string/EditEmail"
         android:inputType="textEmailAddress"
         app:layout_constraintTop_toBottomOf="@id/registerNameEditText"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
         android:id="@+id/registerEnderecoEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Endereço"
+        android:hint="@string/EditEndereco"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/registerEmailEditText" />
@@ -63,7 +63,7 @@
         android:id="@+id/registerCidadeEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Cidade"
+        android:hint="@string/EditCidade"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/registerEnderecoEditText" />
@@ -72,7 +72,7 @@
         android:id="@+id/registerPasswordEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Senha"
+        android:hint="@string/EditSenha"
         android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@id/registerCidadeEditText"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +82,7 @@
         android:id="@+id/registerConfirmPasswordEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Confirmar Senha"
+        android:hint="@string/EditConfirmaSenha"
         android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@id/registerPasswordEditText"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +92,7 @@
         android:id="@+id/registerButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Atualizar"
+        android:text="@string/ButtonAtualizar"
         app:layout_constraintTop_toBottomOf="@id/registerConfirmPasswordEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -101,7 +101,7 @@
         android:id="@+id/sairButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Sair"
+        android:text="@string/ButtonSair"
         app:layout_constraintTop_toBottomOf="@id/registerButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
