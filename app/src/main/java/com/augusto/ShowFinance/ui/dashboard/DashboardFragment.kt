@@ -1,4 +1,5 @@
-package com.jailton.androidapptemplate.ui.dashboard
+
+package com.augusto.ShowFinance.ui.dashboard
 
 import android.app.Activity
 import android.content.Intent
@@ -21,11 +22,10 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import ccom.augusto.ShowFinance.R
+import com.augusto.ShowFinance.R
 import com.augusto.ShowFinance.baseclasses.Item
 import com.augusto.ShowFinance.databinding.FragmentDashboardBinding
 import java.util.UUID
-import com.augusto.ShowFinance.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
 
@@ -52,12 +52,9 @@ class DashboardFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+        val dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -78,7 +75,7 @@ class DashboardFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
 
         try {
-            storageReference = FirebaseStorage.getInstance().reference.child("itens_images")
+            storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://androidapptemplate-c4b02.firebasestorage.app").child("itens_images")
         } catch (e: Exception) {
             Log.e("FirebaseStorage", "Erro ao obter referência para o Firebase Storage", e)
             // Trate o erro conforme necessario, por exemplo:
@@ -99,5 +96,81 @@ class DashboardFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun openFileChooser() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+        startActivityForResult(intent, PICK_IMAGE_REQUEST)
+    }
+
+    private fun salvarItem() {
+        //TODO("Capture aqui o conteudo que esta nos outros editTexts que foram criados")
+        val endereco = enderecoEditText.text.toString().trim()
+
+        if (endereco.isEmpty() || imageUri == null) {
+            Toast.makeText(context, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT)
+                .show()
+            return
+        }
+
+        if (imageUri == null) {
+            Toast.makeText(context, "Por favor, preencha todos os campos", Toast.LENGTH_SHORT)
+                .show()
+        } else {
+            uploadImageToFirebase()
+        }
+    }
+
+    private fun uploadImageToFirebase() {
+        if (imageUri != null) {
+            val fileReference = storageReference.child(UUID.randomUUID().toString())
+            fileReference.putFile(imageUri!!)
+                .addOnSuccessListener {
+                    fileReference.downloadUrl.addOnSuccessListener { uri ->
+                        val imageUrl = uri.toString()
+                        val endereco = enderecoEditText.text.toString().trim()
+                        val item = Item(endereco, imageUrl)
+
+                        saveItemIntoDatabase(item)
+                    }
+                }
+                .addOnFailureListener {
+                    Toast.makeText(context, "Falha ao fazer upload da imagem", Toast.LENGTH_SHORT)
+                        .show()
+                }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK
+            && data != null && data.data != null
+        ) {
+            imageUri = data.data
+            Glide.with(this).load(imageUri).into(itemImageView)
+        }
+    }
+
+    private fun saveItemIntoDatabase(item: Item) {
+        //TODO("Altere a raiz que sera criada no seu banco de dados do realtime database.
+        // Renomeie a raiz itens")
+        databaseReference = FirebaseDatabase.getInstance().getReference("itens")
+
+        // Cria uma chave unica para o novo item
+        val itemId = databaseReference.push().key
+        if (itemId != null) {
+            databaseReference.child(auth.uid.toString()).child(itemId).setValue(item)
+                .addOnSuccessListener {
+                    Toast.makeText(context, "Item cadastrado com sucesso!", Toast.LENGTH_SHORT)
+                        .show()
+                    requireActivity().supportFragmentManager.popBackStack()
+                }.addOnFailureListener {
+                    Toast.makeText(context, "Falha ao cadastrar o item", Toast.LENGTH_SHORT).show()
+                }
+        } else {
+            Toast.makeText(context, "Erro ao gerar o ID do item", Toast.LENGTH_SHORT).show()
+        }
     }
 }
