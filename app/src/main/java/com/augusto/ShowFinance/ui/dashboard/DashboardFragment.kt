@@ -25,9 +25,6 @@ import com.augusto.ShowFinance.R
 import com.augusto.ShowFinance.baseclasses.Item
 import com.augusto.ShowFinance.databinding.FragmentDashboardBinding
 import java.util.UUID
-import com.jailton.androidapptemplate.R
-import com.jailton.androidapptemplate.baseclasses.Item
-import com.jailton.androidapptemplate.databinding.FragmentDashboardBinding
 import kotlinx.coroutines.CoroutineStart
 
 

@@ -1,4 +1,4 @@
-package com.jailton.androidapptemplate
+package com.augusto.ShowFinance
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
