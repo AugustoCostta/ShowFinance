@@ -1,4 +1,4 @@
-package com.jailton.androidapptemplate.ui.dashboard
+package com.augusto.ShowFinance.ui.dashboard
 
 import android.app.Activity
 import android.content.Intent

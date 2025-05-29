@@ -44,15 +44,15 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(channelId, "Status do Pedido", NotificationManager.IMPORTANCE_DEFAULT)
+            val channel = NotificationChannel(channelId, "Perecentual de contas Pagas", NotificationManager.IMPORTANCE_DEFAULT)
             notificationManager.createNotificationChannel(channel)
         }
 
         // TODO: Substituir a logica aqui
         val targetProgress = when (status) {
-            "em preparo" -> 33
-            "saindo para entrega" -> 66
-            "entregue" -> 100
+            "Pendentes" -> 33
+            "Parciais" -> 66
+            "Baixadas" -> 100
             else -> 0
         }
 
@@ -73,7 +73,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val updateRunnable = object : Runnable {
             override fun run() {
                 if (currentProgress <= targetProgress) {
-                    remoteViews.setTextViewText(R.id.status_text, "Pedido: $status")
+                    remoteViews.setTextViewText(R.id.status_text, "Status: $status")
                     remoteViews.setProgressBar(R.id.progress_bar, 100, currentProgress, false)
                     notificationManager.notify(notificationId, builder.build())
                     currentProgress++

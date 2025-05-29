@@ -1,4 +1,4 @@
-package com.jailton.androidapptemplate.ui.home
+package com.augusto.ShowFinance.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
