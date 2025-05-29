@@ -1,5 +1,4 @@
-
-package com.augusto.ShowFinance.ui.dashboard
+package com.jailton.androidapptemplate.ui.dashboard
 
 import android.app.Activity
 import android.content.Intent
@@ -26,6 +25,11 @@ import com.augusto.ShowFinance.R
 import com.augusto.ShowFinance.baseclasses.Item
 import com.augusto.ShowFinance.databinding.FragmentDashboardBinding
 import java.util.UUID
+import com.jailton.androidapptemplate.R
+import com.jailton.androidapptemplate.baseclasses.Item
+import com.jailton.androidapptemplate.databinding.FragmentDashboardBinding
+import kotlinx.coroutines.CoroutineStart
+
 
 class DashboardFragment : Fragment() {
 
@@ -75,7 +79,7 @@ class DashboardFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
 
         try {
-            storageReference = FirebaseStorage.getInstance().getReferenceFromUrl("gs://androidapptemplate-c4b02.firebasestorage.app").child("itens_images")
+            storageReference = FirebaseStorage.getInstance().reference.child("itens_images")
         } catch (e: Exception) {
             Log.e("FirebaseStorage", "Erro ao obter referência para o Firebase Storage", e)
             // Trate o erro conforme necessario, por exemplo:
