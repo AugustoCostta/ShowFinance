@@ -1,4 +1,4 @@
-package com.jailton.androidapptemplate.ui.home
+package com.augusto.ShowFinance.ui.home
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -26,7 +26,6 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.location.Priority
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.DataSnapshot
@@ -36,8 +35,7 @@ import com.google.firebase.database.ValueEventListener
 import com.augusto.ShowFinance.R
 import com.augusto.ShowFinance.baseclasses.Item
 import com.augusto.ShowFinance.databinding.FragmentHomeBinding
-import com.augusto.ShowFinance.ui.ai.AiLogicActivity
-import com.augusto.ShowFinance.ui.ai.AiLogicFragment
+import com.augusto.ShowFinance.ui.AiLogicActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -200,6 +198,7 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+
 
         locationRequest = LocationRequest.create().apply {
             interval = 30000 // Intervalo em milissegundos para atualizacoes de localizacao

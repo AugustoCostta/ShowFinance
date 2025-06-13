@@ -1,8 +1,8 @@
-package com.jailton.androidapptemplate.ui.ai
+package com.augusto.ShowFinance.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.jailton.androidapptemplate.R
+import com.augusto.ShowFinance.R
 
 class AiLogicActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
